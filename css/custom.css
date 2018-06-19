@@ -1,0 +1,352 @@
+/* -------------- FONT FACE -------------- */
+
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('../fonts/proxima/proximanova-light-webfont.eot');
+	src: url('../fonts/proxima/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/proxima/proximanova-light-webfont.woff2') format('woff2'),
+	url('../fonts/proxima/proximanova-light-webfont.woff') format('woff'),
+	url('../fonts/proxima/proximanova-light-webfont.ttf') format('truetype'),
+	url('../fonts/proxima/proximanova-light-webfont.svg#proxima_novalight') format('svg');
+	font-weight: 300;
+	font-style: normal;
+
+}
+
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('../fonts/proxima/proximanova-regular-webfont.eot');
+	src: url('../fonts/proxima/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/proxima/proximanova-regular-webfont.woff2') format('woff2'),
+	url('../fonts/proxima/proximanova-regular-webfont.woff') format('woff'),
+	url('../fonts/proxima/proximanova-regular-webfont.ttf') format('truetype'),
+	url('../fonts/proxima/proximanova-regular-webfont.svg#proxima_nova_rgregular') format('svg');
+	font-weight: 400;
+	font-style: normal;
+
+}
+
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('../fonts/proxima/proximanova-semibold-webfont.eot');
+	src: url('../fonts/proxima/proximanova-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/proxima/proximanova-semibold-webfont.woff2') format('woff2'),
+	url('../fonts/proxima/proximanova-semibold-webfont.woff') format('woff'),
+	url('../fonts/proxima/proximanova-semibold-webfont.ttf') format('truetype'),
+	url('../fonts/proxima/proximanova-semibold-webfont.svg#proxima_novasemibold') format('svg');
+	font-weight: 500;
+	font-style: normal;
+
+}
+
+
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('../fonts/proxima/proximanova-bold-webfont.eot');
+	src: url('../fonts/proxima/proximanova-bold-webfont.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/proxima/proximanova-bold-webfont.woff2') format('woff2'),
+	url('../fonts/proxima/proximanova-bold-webfont.woff') format('woff'),
+	url('../fonts/proxima/proximanova-bold-webfont.ttf') format('truetype'),
+	url('../fonts/proxima/proximanova-bold-webfont.svg#proxima_nova_rgbold') format('svg');
+	font-weight: 600;
+	font-style: normal;
+
+}
+
+/* -------------- GENERALES -------------- */
+
+body{
+	font-family: 'ProximaNova',sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	position: relative;
+	height: 100%;
+}
+
+main{
+	position: relative;
+}
+
+strong{
+	font-weight: bold;
+}
+
+h1{
+	font-family: 'Roboto Slab', serif;
+	font-size: 2.3rem;
+	font-weight: 700;
+	
+}
+
+h2,h3,h4,h5,h6{
+	font-family: 'Roboto Slab', serif;
+}
+
+
+
+p{
+	font-size: 1.3rem;
+}
+
+.lead{
+	font-size: 1.35rem;
+	font-weight: 300;
+}
+
+.btn-egg{
+	font-family: 'Roboto Slab', serif;
+	background-color: #ffca00;
+	border-color: #ffca00; 
+}
+
+.accordion{
+	overflow: hidden;
+}
+
+.btn-egg:hover{
+	background-color:#dbaf33 !important; 
+	border-color: #dbaf33 !important;
+	transition-duration: 0.2s;
+	-moz-transition-duration: 0.2s; /* Firefox 4 */
+	-webkit-transition-duration: 0.2s; /* Safari and Chrome */
+	-o-transition-duration: 0.2s; /* Opera */
+}
+
+
+.btn-egg.dark{
+	background-color: #333;
+	border-color: #333;
+}
+
+.btn-egg.dark:hover{
+	background-color: #666 !important;
+	border-color: #333;
+}
+
+.btn-egg.contraste{
+	color: #333;
+}
+
+
+.btn-link{white-space:normal;}
+
+.tooltip p{
+	font-size: 1rem !important;
+}
+
+.whatsapp{
+	position:fixed;
+	bottom:30px;
+	right:30px;
+	z-index: 10000;
+    opacity:0;
+}
+
+.washrink{
+    opacity:1;
+	-webkit-transition:opacity 0.6s ease;
+	-moz-transition:opacity 0.6s ease; 
+	-o-transition:opacity 0.6s ease;      
+	transition:opacity 0.6s ease; 
+}
+
+/* -------------- NAVIGATION -------------- #ffca00 */
+nav{
+}
+
+nav #first {
+	text-transform: uppercase;
+	font-size: 0.7rem;
+	font-weight: bold;
+	letter-spacing: 0.15rem;
+	padding: auto;
+}
+
+nav #second{
+	box-shadow: 0px 7px 20px -15px #333;
+} 
+
+#first.shrink{ 
+	padding: 0px;
+	-webkit-transition:padding 0.2s ease;
+	-moz-transition:padding 0.2s ease; 
+	-o-transition:padding 0.2s ease;      
+	transition:padding 0.2s ease;  
+}
+
+
+
+.nav-link{
+	padding-right: 0.8rem !important;
+	padding-left: 0.8rem !important;
+}
+
+.nav-link.active{
+	color:#ffca00 !important;
+}
+
+.txtbco{
+	color:white;
+}
+
+.txtylow{
+	color:#ffca00;
+}
+
+
+
+/* -------------- HERO -------------- #ffca00 */
+
+#hero{
+	/* background: url('../images/img_hero.jpg');
+	background-size: cover; */
+	height: 750px !important;
+	padding-top:115px;
+}
+
+
+/* -------------- APRENDE CREANDO / A QUIEN VA DIRIGIDO -------------- #ffca00 */
+
+
+
+/* -------------- QUE VAS A APRENDER -------------- #ffca00 */
+#learnbydoing{
+	background: url('../images/bg_rayos.png') #ffca00;
+	background-position: center center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+
+/* -------------- PROGRAMA -------------- #ffca00 */
+#programa{
+	background: url('../images/bg_elementos.png');
+	background-position: center right;
+	background-size: 50%;
+	background-repeat: no-repeat;
+}
+
+
+ul{
+	padding:0;
+margin:0;
+	list-style-position: inside;
+}
+
+.accordion, .acordion ul li{
+	font-size: 1.3rem;
+}
+
+.accordion button{
+	text-decoration: none !important;
+	color: #333;
+	font-size: 1.2rem;
+}
+
+.accordion button:hover{
+	text-decoration: none !important;
+	color: #ffca00;
+}
+
+/* -------------- EDUUCACION DEL FUTURO -------------- #ffca00 */
+
+#edudelfuturo{
+	background: #ffca00;
+}
+
+
+/* -------------- CUPOS LIMITADOS -------------- #ffca00 */
+
+#cuposlimitados{
+	background: url("../images/pattern.svg") #3e4646;
+}
+
+#cuposlimitados h1{
+	font-size: 3rem;
+}
+
+
+
+/* -------------- PROCESO DE INSCRIPCIÓN -------------- #ffca00 */
+
+
+
+
+/* -------------- PROFESORES -------------- #ffca00 */
+
+#profesores{
+	background: url("../images/pattern.svg") #3e4646;
+}
+
+#profesores img{
+	width: 70%;
+	
+	margin-bottom: 15px;
+}
+
+#profesores h5{
+	font-family: 'Roboto Slab', serif;
+	margin-bottom: 15px;
+}
+
+#profesores small{
+	font-size: 1rem;
+	color: #ffca00;
+}
+
+
+
+
+/* -------------- HORARIO Y PRECIOS -------------- #ffca00 */
+
+#datos{
+	background: #ffca00;
+}
+
+
+#horariosyprecios{
+	border-radius:15px !important;
+}
+
+
+
+@media (min-width: 576px) { 
+
+	/* -------------- GENERALES -------------- */
+
+
+
+}
+
+
+@media (min-width: 768px) {
+
+	.padding-section{
+		padding:50px 0 50px;
+	}
+
+}
+
+@media (min-width: 992px) { 
+
+}
+
+@media (min-width: 1200px) { 
+
+	#hero h1{
+		font-size: 3rem;
+	}
+
+}
+
+@media (min-width: 1662px) { 
+
+	.limit-panel{
+		max-width: 1662px;
+		margin:15px auto;
+	}
+
+
+
+
+}
