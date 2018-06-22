@@ -128,7 +128,6 @@ p{
 }
 
 
-.btn-link{white-space:normal;}
 
 .tooltip p{
 	font-size: 1rem !important;
@@ -248,10 +247,17 @@ margin:0;
 	color: #ffca00;
 }
 
+.accordion .btn-link{
+		white-space:normal;
+		text-align:center;
+	}
+
+
+
 /* -------------- EDUUCACION DEL FUTURO -------------- #ffca00 */
 
 #edudelfuturo{
-	background: #ffca00;
+	background: url("../images/pattern.svg") #3e4646;
 }
 
 
@@ -280,7 +286,6 @@ margin:0;
 
 #profesores img{
 	width: 70%;
-	
 	margin-bottom: 15px;
 }
 
@@ -308,6 +313,23 @@ margin:0;
 	border-radius:15px !important;
 }
 
+.modal{
+	padding-right: 0px !important;
+}
+
+
+/* -------------- SOCIAL -------------- #ffca00 */
+
+#social{
+	background: url("../images/pattern.svg") #3e4646;
+}
+
+#social i{
+	font-size: 3rem;
+	color:white;
+	background-repeat: no-repeat;
+}
+
 
 
 @media (min-width: 576px) { 
@@ -328,7 +350,9 @@ margin:0;
 }
 
 @media (min-width: 992px) { 
-
+	.accordion .btn-link{
+		text-align:left;
+	}
 }
 
 @media (min-width: 1200px) { 
@@ -337,6 +361,8 @@ margin:0;
 		font-size: 3rem;
 	}
 
+	
+
 }
 
 @media (min-width: 1662px) { 
@@ -344,7 +370,6 @@ margin:0;
 	.limit-panel{
 		max-width: 1662px;
 		margin:15px auto;
-		background-color: #333;
 	}
 
 
