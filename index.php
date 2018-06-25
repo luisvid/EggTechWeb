@@ -229,7 +229,9 @@ function get_data($var) {
               <p class="txtbco">Las clases se dictan en el
                 <strong>ecosistema emprendedor tecnológico de Mendoza</strong>, en un campus donde la innovación y la creatividad se respiran en
                 cada rincón. Trabajarás junto a profesionales del sector
-                <strong>compartiendo con tus profesores</strong> fuera del horario de clase.</p>
+                <strong>compartiendo con tus profesores</strong> fuera del horario de clase.
+                <a target="_blank" href="http://www.campusolegario.org/campus/" class="txtylow"><strong>¡Conocelo!</strong></a></p>
+                
             </div>
           </div>
         </div>
