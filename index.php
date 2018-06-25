@@ -1,3 +1,128 @@
+<?php
+// OPTIONS - PLEASE CONFIGURE THESE BEFORE USE!
+
+$yourEmail = "hola@eggtech.com.ar"; // the email address you wish to receive these mails through
+$yourWebsite = "EGG TECH"; // the name of your website
+$thanksPage = ''; // URL to 'thanks for sending mail' page; leave empty to keep message on the same page 
+$maxPoints = 4; // max points a person can hit before it refuses to submit - recommend 4
+$requiredFields = "name,email,comments"; // names of the fields you'd like to be required as a minimum, separate each field with a comma
+
+
+// DO NOT EDIT BELOW HERE
+$error_msg = array();
+$result = null;
+
+$requiredFields = explode(",", $requiredFields);
+
+function clean($data) {
+  $data = trim(stripslashes(strip_tags($data)));
+  return $data;
+}
+function isBot() {
+  $bots = array("Indy", "Blaiz", "Java", "libwww-perl", "Python", "OutfoxBot", "User-Agent", "PycURL", "AlphaServer", "T8Abot", "Syntryx", "WinHttp", "WebBandit", "nicebot", "Teoma", "alexa", "froogle", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz");
+
+  foreach ($bots as $bot)
+    if (stripos($_SERVER['HTTP_USER_AGENT'], $bot) !== false)
+      return true;
+
+  if (empty($_SERVER['HTTP_USER_AGENT']) || $_SERVER['HTTP_USER_AGENT'] == " ")
+    return true;
+  
+  return false;
+}
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  if (isBot() !== false)
+    $error_msg[] = "No bots please! UA reported as: ".$_SERVER['HTTP_USER_AGENT'];
+    
+  // lets check a few things - not enough to trigger an error on their own, but worth assigning a spam score.. 
+  // score quickly adds up therefore allowing genuine users with 'accidental' score through but cutting out real spam :)
+  $points = (int)0;
+  
+  $badwords = array("adult", "beastial", "bestial", "blowjob", "clit", "cum", "cunilingus", "cunillingus", "cunnilingus", "cunt", "ejaculate", "fag", "felatio", "fellatio", "fuck", "fuk", "fuks", "gangbang", "gangbanged", "gangbangs", "hotsex", "hardcode", "jism", "jiz", "orgasim", "orgasims", "orgasm", "orgasms", "phonesex", "phuk", "phuq", "pussies", "pussy", "spunk", "xxx", "viagra", "phentermine", "tramadol", "adipex", "advai", "alprazolam", "ambien", "ambian", "amoxicillin", "antivert", "blackjack", "backgammon", "texas", "holdem", "poker", "carisoprodol", "ciara", "ciprofloxacin", "debt", "dating", "porn", "link=", "voyeur", "content-type", "bcc:", "cc:", "document.cookie", "onclick", "onload", "javascript");
+
+  foreach ($badwords as $word)
+    if (
+      strpos(strtolower($_POST['comments']), $word) !== false || 
+      strpos(strtolower($_POST['name']), $word) !== false
+    )
+      $points += 2;
+  
+  if (strpos($_POST['comments'], "http://") !== false || strpos($_POST['comments'], "www.") !== false)
+    $points += 2;
+  if (isset($_POST['nojs']))
+    $points += 1;
+  if (preg_match("/(<.*>)/i", $_POST['comments']))
+    $points += 2;
+  if (strlen($_POST['name']) < 3)
+    $points += 1;
+  if (strlen($_POST['comments']) < 15 || strlen($_POST['comments'] > 1500))
+    $points += 2;
+  if (preg_match("/[bcdfghjklmnpqrstvwxyz]{7,}/i", $_POST['comments']))
+    $points += 1;
+  // end score assignments
+
+  foreach($requiredFields as $field) {
+    trim($_POST[$field]);
+    
+    if (!isset($_POST[$field]) || empty($_POST[$field]) && array_pop($error_msg) != "Please fill in all the required fields and submit again.\r\n")
+      $error_msg[] = "Please fill in all the required fields and submit again.";
+  }
+
+  if (!empty($_POST['name']) && !preg_match("/^[a-zA-Z-'\s]*$/", stripslashes($_POST['name'])))
+    $error_msg[] = "The name field must not contain special characters.\r\n";
+  if (!empty($_POST['email']) && !preg_match('/^([a-z0-9])(([-a-z0-9._])*([a-z0-9]))*\@([a-z0-9])(([a-z0-9-])*([a-z0-9]))+' . '(\.([a-z0-9])([-a-z0-9_-])?([a-z0-9])+)+$/i', strtolower($_POST['email'])))
+    $error_msg[] = "That is not a valid e-mail address.\r\n";
+  if (!empty($_POST['url']) && !preg_match('/^(http|https):\/\/(([A-Z0-9][A-Z0-9_-]*)(\.[A-Z0-9][A-Z0-9_-]*)+)(:(\d+))?\/?/i', $_POST['url']))
+    $error_msg[] = "Invalid website url.\r\n";
+  
+  if ($error_msg == NULL && $points <= $maxPoints) {
+    $subject = "Automatic Form Email";
+    
+    $message = "You received this e-mail message through your website: \n\n";
+    foreach ($_POST as $key => $val) {
+      if (is_array($val)) {
+        foreach ($val as $subval) {
+          $message .= ucwords($key) . ": " . clean($subval) . "\r\n";
+        }
+      } else {
+        $message .= ucwords($key) . ": " . clean($val) . "\r\n";
+      }
+    }
+    $message .= "\r\n";
+    $message .= 'IP: '.$_SERVER['REMOTE_ADDR']."\r\n";
+    $message .= 'Browser: '.$_SERVER['HTTP_USER_AGENT']."\r\n";
+    $message .= 'Points: '.$points;
+
+    if (strstr($_SERVER['SERVER_SOFTWARE'], "Win")) {
+      $headers   = "From: $yourEmail\r\n";
+    } else {
+      $headers   = "From: $yourWebsite <$yourEmail>\r\n"; 
+    }
+    $headers  .= "Reply-To: {$_POST['email']}\r\n";
+
+    if (mail($yourEmail,$subject,$message,$headers)) {
+      if (!empty($thanksPage)) {
+        header("Location: $thanksPage");
+        exit;
+      } else {
+        $result = 'Mail enviado correctamente.';
+        $disable = true;
+      }
+    } else {
+      $error_msg[] = 'Your mail could not be sent this time. ['.$points.']';
+    }
+  } else {
+    if (empty($error_msg))
+      $error_msg[] = 'Your mail looks too much like spam, and could not be sent this time. ['.$points.']';
+  }
+}
+function get_data($var) {
+  if (isset($_POST[$var]))
+    echo htmlspecialchars($_POST[$var]);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +143,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
     crossorigin="anonymous">
   <link rel="stylesheet" href="css/custom.css">
-  <title>Egg educación - Marketing</title>
+  <title>Egg Tech</title>
 </head>
 
 <body data-spy="scroll" data-target="#first" data-offset="115">
@@ -29,6 +154,24 @@
   </div>
   <header>
     <nav class="fixed-top" data-toggle="affix" role="navigation">
+
+      <!-- <div id="first" class="navbar navbar-dark bg-dark navbar-expand-md d-none d-sm-none d-md-block">
+        <div class="nav navbar-nav collapse navbar-collapse justify-content-center" id="mainNav">
+          <a class="nav-item nav-link active" href="index.php">Inicio</a>
+          <a class="nav-item nav-link" href="#dirigido">¿A quién va dirigido?</a>
+          <a class="nav-item nav-link" href="#learnbydoing">¿Qué vas a aprender?</a>
+          <a class="nav-item nav-link" href="#profesores">Profesores</a>
+          <a class="nav-item nav-link" href="#edudelfuturo">Educación del futuro</a>
+          <a class="nav-item nav-link" href="#datos">Horarios y Precios</a>
+          <a target="_blank" class="nav-item nav-link" href="https://www.facebook.com/EggTechDigital" style="margin-right: -15px">
+            <i style="font-size: 1rem" class="fab fa-facebook-square"></i>
+          </a>
+          <a target="_blank" class="nav-item nav-link" href="https://www.instagram.com/egg_tech/">
+            <i style="font-size: 1rem" class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div> -->
+
       <div id="second" class="navbar navbar-light bg-light navbar-expand-sm">
         <div class="container">
           <a class="navbar-brand mx-auto mx-md-0" href="#">
@@ -53,8 +196,8 @@
           <div class="col-12 col-md-8 offset-md-2 align-self-center text-center">
             <h1>¡Aprendé Marketing Digital y Programación de la mano de los mejores!</h1>
             <p class="my-4 lead"></p>
-            <a href="marketing.html" class="btn btn-primary btn-egg btn-lg dark mr-md-4 mb-3 mb-md-0" style="width: 250px">Marketing Digital</a>
-            <a href="programacion.html" class="btn btn-primary btn-egg btn-lg dark" style="width: 250px">Programación</a>
+            <a href="marketing.php" class="btn btn-primary btn-egg btn-lg dark mr-md-4 mb-3 mb-md-0" style="width: 250px">Marketing Digital</a>
+            <a href="programacion.php" class="btn btn-primary btn-egg btn-lg dark" style="width: 250px">Programación</a>
           </div>
         </div>
       </div>
@@ -367,25 +510,86 @@
   </script>
   <!-- MODALES -->
   <!-- Modal -->
-  <div class="modal fade" id="prof1" tabindex="-1" role="dialog" aria-labelledby="prof1Title" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="prof1Title">Carolina Pérez Mora</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi qui sed consectetur aliquam dolorem perferendis tempora
-          labore expedita assumenda, est, maiores vero, magnam quis beatae modi explicabo. Ab, ut, ipsam.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <div class="modal fade bd-example-modal-lg" id="formcontactomodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="padding-right: 0px !important">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" data-dismiss="modal" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row text-center">
+            <div class="col-10 offset-1">
+              <h2 class="mb-4">¿Estás interesado en Marketing Digital?</h2>
+              <p class="mb-4">¡Dejanos tus datos y te contactamos para iniciar el proceso de inscripción!</p>
+            </div>
+          </div>
+          <form role="form" id="contact-form" enctype="multipart/form-data" method="POST" action="<?php echo basename(__FILE__);
+?>">
+            <?php
+            if (!empty($error_msg)) {
+	echo '<p style="color:#e20613" class="error">ERROR: '. implode("<br />", $error_msg) . "</p>";
+}
+if ($result != NULL) {
+	?>
+              <script>
+                $('#formcontactomodal').modal('show')
+              </script>
+            <?php 
+              echo '<p class="text-center success bg-success p-2" style="color:white; border-radius:5px; font-size:1rem;">'. $result . "</p>";
+}
+?>
+            <div id="messages" class="messages text-center"></div>
+            <div class="controls">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <!-- <label for="form_name">Firstname *</label>  -->
+                    <input id="form_name" type="text" name="name" class="form-control input-lg" placeholder="Nombre y Apellido *" required="required" data-error="Campo requerido.">
+                    <p class="help-block bg-warning"></p>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <!-- <label for="form_lastname">Lastname *</label>  -->
+                    <input id="form_email" type="email" name="email" class="form-control input-lg" placeholder="Email *" required="required" data-error="Email válido es requerido.">
+                    <p class="help-block bg-warning"></p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <!-- <label for="form_email">Email *</label>  -->
+                    <input id="form_phone" type="number" name="phone" class="form-control input-lg" required="required" placeholder="Whatsapp *" data-error="Campo requerido.">
+                    <p class="help-block bg-warning"></p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <!-- <label for="form_message">Message *</label>  -->
+                    <textarea id="form_message" name="comments" class="form-control input-lg" placeholder="Mensaje *" rows="4" required="required" data-error="Por favor, escribe un mensaje."></textarea>
+                    <p class="help-block bg-warning"></p>
+                  </div>
+                </div>
+                <div class="col-md-12 text-center">
+                  <input type="submit" class="btn btn-primary btn-egg contraste" value="ENVIAR">
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+
+
 </body>
 
 </html>
