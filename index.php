@@ -155,14 +155,12 @@ function get_data($var) {
   <header>
     <nav class="fixed-top" data-toggle="affix" role="navigation">
 
-      <!-- <div id="first" class="navbar navbar-dark bg-dark navbar-expand-md d-none d-sm-none d-md-block">
+      <div id="first" class="navbar navbar-dark bg-dark navbar-expand-md d-none d-sm-none d-md-block">
         <div class="nav navbar-nav collapse navbar-collapse justify-content-center" id="mainNav">
           <a class="nav-item nav-link active" href="index.php">Inicio</a>
-          <a class="nav-item nav-link" href="#dirigido">¿A quién va dirigido?</a>
-          <a class="nav-item nav-link" href="#learnbydoing">¿Qué vas a aprender?</a>
-          <a class="nav-item nav-link" href="#profesores">Profesores</a>
-          <a class="nav-item nav-link" href="#edudelfuturo">Educación del futuro</a>
-          <a class="nav-item nav-link" href="#datos">Horarios y Precios</a>
+          <a class="nav-item nav-link" href="#edudelfuturo">Nuestro sistema</a>
+          <a class="nav-item nav-link" href="#faq">Preguntas Frecuentes</a>
+          <a class="nav-item nav-link" href="#alianzas">Nuestras Alianzas</a>
           <a target="_blank" class="nav-item nav-link" href="https://www.facebook.com/EggTechDigital" style="margin-right: -15px">
             <i style="font-size: 1rem" class="fab fa-facebook-square"></i>
           </a>
@@ -170,7 +168,7 @@ function get_data($var) {
             <i style="font-size: 1rem" class="fab fa-instagram"></i>
           </a>
         </div>
-      </div> -->
+      </div>
 
       <div id="second" class="navbar navbar-light bg-light navbar-expand-sm">
         <div class="container">
@@ -179,8 +177,9 @@ function get_data($var) {
           </a>
           <div class="ml-auto mr-3 d-none d-lg-block">
             <span>
-              <strong>
-                <i class="fab fa-whatsapp mr-2"></i>261-6852-036</strong>
+              <a target="_blank" href="https://api.whatsapp.com/send?phone=5492616852036&text=Hola!%20Me%20gustaría%20recibir%20más%20información">
+                <strong><i class="fab fa-whatsapp mr-2"></i>261-6852-036</strong>
+              </a>
             </span>
           </div>
           <!-- <a target="_blank" href="https://m.me/344275365916631" class="btn btn-primary btn-egg contraste d-none d-md-block "><strong>¡INSCRIBITE AHORA!</strong></a> -->
@@ -385,8 +384,8 @@ function get_data($var) {
       </div>
     </section>
 
-    <section class="mb-5">
-
+    <section id="alianzas" class="mb-5">
+    
       <div class="col-12 col-md-8 offset-md-2 text-center pt-5">
         <h1>Nuestras Alianzas</h1>
         <br>

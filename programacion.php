@@ -178,8 +178,9 @@ function get_data($var) {
           </a>
           <div class="ml-auto mr-3 d-none d-lg-block">
             <span>
-              <strong>
-                <i class="fab fa-whatsapp mr-2"></i>261-6852-036</strong>
+              <a target="_blank" href="https://api.whatsapp.com/send?phone=5492616852036&text=Hola!%20Me%20gustaría%20recibir%20más%20información%20sobre%20el%20curso%20de%20Programación">
+                <strong><i class="fab fa-whatsapp mr-2"></i>261-6852-036</strong>
+              </a>
             </span>
           </div>
           <a target="_blank" data-toggle="modal" data-target="#formcontactomodal" data-backdrop="static" data-keyboard="false" class="btn btn-primary btn-egg contraste d-none d-md-block "><strong>INSCRIBITE AHORA</strong></a>
@@ -605,7 +606,7 @@ function get_data($var) {
                   </h5>
                 </span>
                 <span class="d-block">
-                  <h5>18:30 A 21:30</h5>
+                  <h5>18:00 A 22:00</h5>
                 </span>
               </div>
               <div class="text-center align-self-center my-4 my-lg-0">
