@@ -1,0 +1,52 @@
+
+Martes: día 1
+- Ice Breaker: story cubes
+- Lightning Talks
+- How Might We” Note Taking Method: categories
+- HMW Sharing and Affinity Mapping: on boarding: concepto de introducir o presentar una idea o nueva a los compañeros
+- Challenge, desafios y oportunidades que encontramos
+- Definir Persona: specific type of user, also known as a persona
+- Buscar 4 personas que correspondan a esas Personas definidas para hacerles entrevistas/pruebas
+- Cierre: que sigue y que se llevan
+
+Miércoles: día 2
+- hacer prototipo para que mañana el usuario lo pruebe
+- user/customer journey map (debería haberse hecho el martes
+- con posits hacer match entre los momentos que se desprenden del customer jorney con las oportunidades (Challenge) detectadas ayer
+- Gringo, Boot Up Note Taking: Collect your thoughts and prepare to sketch
+- cada uno escribe sus ideas en silencio
+- Crazy eigths, A4 doblado en cuatro, en cada uno de los 8 espacios cada participante dibuja distintas ideas de interfase de un momento de los elegidos: 8 minutos para dibujar las 8 ideas
+- 2 minutos para elegir individualmente cual de los 8 diseños es el favorito
+- dibujar la idea/interfase elegida en contexto, p.ej. si es un login, dibujar la página y el form de login como se vería tan cual, teniendo en cuenta al menos tres estados posibles.
+- Cómo saber si el nivel de detalle es adecuado: si hay que explicarlo está mal.
+- Exposición y voto de los diseños, 3 votos para cada uno
+- Dibujar, en una hora, un story board con el diseño ganador, de la Persona utilizando el diseño ganador en contexto, p.ej. si lo usa en casa, oficina, playa
+- Pitch ente todos de cómo va quedando el storyboard
+- Almuerzo
+- Pregunta quienes tienen al menos 2-4 usuarios para hacer las pruebas del prototipo, no necesariamente tiene que se in-situ
+- Desarrollo del prototipo 2 horas
+
+Jueves: día 3
+- User testing: Dinámica: un moderador que habla con el user/client y un observador que toma nota de lo que dice mientras usa el prototipo. estar atentos a los distintos sesgos del user, que no quiera quedar bien con nosotros, ¿te gusta?. Hacer preguntas abiertas: usas Facebook? por: que redes sociales usas? dejarlo hablar, no responderle las preguntas, que se de cuenta solo.
+
+- Charlas:
+
+- User Testing by Nicolás Chometowski
+https://docs.google.com/presentation/d/1xaJUmpIfIND1E_JrX1Jm-zWVjK0q-QtlEBc4Rs-oyPs/edit#slide=id.g23159dc04b_0_103
+
+- fundraising 101 by  Andy Young VP Product and Growth, Kaszek VC
+#OlegarioGoogleDS @CampusOlegario
+
+- “Workshop” mobile, también por Andy Young 
+https://www.linkedin.com/pulse/mobile-workshop-growth-andy-young/
+
+- User testing: casi todos los equipos han traído a uno/s usuarios a probar la interfase in-situ, eso está muy bueno, pero como les decía, validan facilidad de uso, no si pagarían por tu solución, es para otra etapa, no para una startup early stage.
+
+
+
+
+
+
+
+
+

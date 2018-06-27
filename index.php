@@ -461,6 +461,16 @@ function get_data($var) {
       </div>
     </section>
 
+    <section id="f1" class="gris">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 text-left hidden-xs hidden-sm">
+                    <a class="" id="logo_footer" href="trabaje.php"><img src="images/logo_footer.png" alt="Logo Egg"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
   </main>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -596,8 +606,6 @@ if ($result != NULL) {
     </div>
   </div>
 </div>
-
-
 
 </body>
 
