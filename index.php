@@ -179,7 +179,7 @@ function get_data($var) {
           <div class="ml-auto mr-3 d-none d-lg-block">
             <span>
               <a target="_blank" href="https://api.whatsapp.com/send?phone=5492616852036&text=Hola!%20Me%20gustaría%20recibir%20más%20información">
-                <strong><i class="fab fa-whatsapp mr-2"></i>261-6852-036</strong>
+                <strong style="color:black"><i class="fab fa-whatsapp mr-2"></i>261-6852-036</strong>
               </a>
             </span>
           </div>
