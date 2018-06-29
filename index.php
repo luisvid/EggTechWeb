@@ -144,6 +144,14 @@ function get_data($var) {
     crossorigin="anonymous">
   <link rel="stylesheet" href="css/custom.css">
   <title>Egg Tech</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121626220-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-121626220-1');
+  </script>
 </head>
 
 <body data-spy="scroll" data-target="#first" data-offset="115">
@@ -461,7 +469,7 @@ function get_data($var) {
       </div>
     </section>
 
-    <section id="f1" class="gris">
+    <!-- <section id="f1" class="gris">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 text-left hidden-xs hidden-sm">
@@ -469,7 +477,7 @@ function get_data($var) {
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
   </main>
   <!-- Optional JavaScript -->

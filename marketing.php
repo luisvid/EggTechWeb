@@ -145,6 +145,14 @@ function get_data($var) {
     crossorigin="anonymous">
   <link rel="stylesheet" href="css/custom.css">
   <title>Egg Tech - Marketing</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121626220-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-121626220-1');
+  </script>
 </head>
 
 <body data-spy="scroll" data-target="#first" data-offset="115">
