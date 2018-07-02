@@ -151,7 +151,7 @@ function get_data($var) {
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'UA-121626220-1');
-  </script>
+  </script> 
 </head>
 
 <body data-spy="scroll" data-target="#first" data-offset="115">
@@ -406,40 +406,58 @@ function get_data($var) {
 
         <div class="row text-center">
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/embarca.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/logos/embarca.jpg" alt="Embarca">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/mdz.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/logos/mdz.jpg" alt="MDZ">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/olegario.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/logos/olegario.jpg" alt="Campues Olegario">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/agilmentor.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/logos/agilmentor.jpg" alt="AgilMentor">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/tienda_naranja.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/logos/tienda_naranja.jpg" alt="Tienda Naranja">
           </div>
-          <div class="col-6 col-md p-4 d-block d-md-none">
-            <img class="img-fluid" src="images/logos/mydesign.jpg" alt="Logo MyDesign">
+          <!-- <div class="col-6 col-md p-4 d-block d-md-none">
+            <img class="img-fluid" src="images/logos/mydesign.jpg" alt="My Design">
+          </div> -->
+        </div>
+
+        <div class="row text-center mt-lg-5">
+          <div class="col-6 col-md p-4 d-none d-md-block">
+            <img class="img-fluid" src="images/logos/mydesign.jpg" alt="My Design">
+          </div>
+          <div class="col-6 col-md p-4">
+            <img class="img-fluid" src="images/logos/la_proa.jpg" alt="La Proa">
+          </div>
+          <div class="col-6 col-md p-4">
+            <img class="img-fluid" src="images/logos/polenta.jpg" alt="Polenta">
+          </div>
+          <div class="col-6 col-md p-4">
+            <img class="img-fluid" src="images/logos/dictioz.jpg" alt="Dictioz">
+          </div>
+          <div class="col-6 col-md p-4">
+            <img class="img-fluid" src="images/logos/los_andes.jpg" alt="Los Andes">
           </div>
         </div>
 
         <div class="row text-center mt-lg-5">
           <div class="col-6 col-md p-4 d-none d-md-block">
-            <img class="img-fluid" src="images/logos/mydesign.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/logos/aconcagua_sf.png" alt="Aconcagua SF">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/la_proa.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/white.jpg" alt="">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/polenta.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/white.jpg" alt="">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/dictioz.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/white.jpg" alt="">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/los_andes.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/white.jpg" alt="">
           </div>
         </div>
 
