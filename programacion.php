@@ -1,53 +1,46 @@
 <?php
 // OPTIONS - PLEASE CONFIGURE THESE BEFORE USE!
 
-$yourEmail = "hola@eggtech.com.ar"; // the email address you wish to receive these mails through
-$yourWebsite = "EggTech Programacion"; // the name of your website
-$thanksPage = ''; // URL to 'thanks for sending mail' page; leave empty to keep message on the same page 
-$maxPoints = 4; // max points a person can hit before it refuses to submit - recommend 4
-$requiredFields = "name,email,comments"; // names of the fields you'd like to be required as a minimum, separate each field with a comma
-
-
+$yourEmail = "hola@eggtech.com.ar";
+// the email address you wish to receive these mails through
+$yourWebsite = "EggTech Programacion";
+// the name of your website
+$thanksPage = '';
+// URL to 'thanks for sending mail' page -leave empty to keep message on the same page 
+$maxPoints = 4;
+// max points a person can hit before it refuses to submit - recommend 4
+$requiredFields = "name,email,comments";
+// names of the fields you'd like to be required as a minimum, separate each field with a comma
 // DO NOT EDIT BELOW HERE
 $error_msg = array();
 $result = null;
-
 $requiredFields = explode(",", $requiredFields);
-
 function clean($data) {
   $data = trim(stripslashes(strip_tags($data)));
   return $data;
 }
 function isBot() {
   $bots = array("Indy", "Blaiz", "Java", "libwww-perl", "Python", "OutfoxBot", "User-Agent", "PycURL", "AlphaServer", "T8Abot", "Syntryx", "WinHttp", "WebBandit", "nicebot", "Teoma", "alexa", "froogle", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz");
-
   foreach ($bots as $bot)
     if (stripos($_SERVER['HTTP_USER_AGENT'], $bot) !== false)
       return true;
-
   if (empty($_SERVER['HTTP_USER_AGENT']) || $_SERVER['HTTP_USER_AGENT'] == " ")
     return true;
-  
   return false;
 }
-
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   if (isBot() !== false)
     $error_msg[] = "No bots please! UA reported as: ".$_SERVER['HTTP_USER_AGENT'];
-    
   // lets check a few things - not enough to trigger an error on their own, but worth assigning a spam score.. 
   // score quickly adds up therefore allowing genuine users with 'accidental' score through but cutting out real spam :)
   $points = (int)0;
-  
   $badwords = array("adult", "beastial", "bestial", "blowjob", "clit", "cum", "cunilingus", "cunillingus", "cunnilingus", "cunt", "ejaculate", "fag", "felatio", "fellatio", "fuck", "fuk", "fuks", "gangbang", "gangbanged", "gangbangs", "hotsex", "hardcode", "jism", "jiz", "orgasim", "orgasims", "orgasm", "orgasms", "phonesex", "phuk", "phuq", "pussies", "pussy", "spunk", "xxx", "viagra", "phentermine", "tramadol", "adipex", "advai", "alprazolam", "ambien", "ambian", "amoxicillin", "antivert", "blackjack", "backgammon", "texas", "holdem", "poker", "carisoprodol", "ciara", "ciprofloxacin", "debt", "dating", "porn", "link=", "voyeur", "content-type", "bcc:", "cc:", "document.cookie", "onclick", "onload", "javascript");
-
   foreach ($badwords as $word)
     if (
       strpos(strtolower($_POST['comments']), $word) !== false || 
       strpos(strtolower($_POST['name']), $word) !== false
     )
       $points += 2;
-  
   if (strpos($_POST['comments'], "http://") !== false || strpos($_POST['comments'], "www.") !== false)
     $points += 2;
   if (isset($_POST['nojs']))
@@ -61,24 +54,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   if (preg_match("/[bcdfghjklmnpqrstvwxyz]{7,}/i", $_POST['comments']))
     $points += 1;
   // end score assignments
-
   foreach($requiredFields as $field) {
     trim($_POST[$field]);
-    
     if (!isset($_POST[$field]) || empty($_POST[$field]) && array_pop($error_msg) != "Please fill in all the required fields and submit again.\r\n")
       $error_msg[] = "Please fill in all the required fields and submit again.";
   }
-
   if (!empty($_POST['name']) && !preg_match("/^[a-zA-Z-'\s]*$/", stripslashes($_POST['name'])))
     $error_msg[] = "The name field must not contain special characters.\r\n";
   if (!empty($_POST['email']) && !preg_match('/^([a-z0-9])(([-a-z0-9._])*([a-z0-9]))*\@([a-z0-9])(([a-z0-9-])*([a-z0-9]))+' . '(\.([a-z0-9])([-a-z0-9_-])?([a-z0-9])+)+$/i', strtolower($_POST['email'])))
     $error_msg[] = "That is not a valid e-mail address.\r\n";
   if (!empty($_POST['url']) && !preg_match('/^(http|https):\/\/(([A-Z0-9][A-Z0-9_-]*)(\.[A-Z0-9][A-Z0-9_-]*)+)(:(\d+))?\/?/i', $_POST['url']))
     $error_msg[] = "Invalid website url.\r\n";
-  
   if ($error_msg == NULL && $points <= $maxPoints) {
     $subject = "Consulta curso Programación desde sitio web";
-    
     $message = "You received this e-mail message through your website: Programacion \n\n";
     foreach ($_POST as $key => $val) {
       if (is_array($val)) {
@@ -93,14 +81,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $message .= 'IP: '.$_SERVER['REMOTE_ADDR']."\r\n";
     $message .= 'Browser: '.$_SERVER['HTTP_USER_AGENT']."\r\n";
     $message .= 'Points: '.$points;
-
     if (strstr($_SERVER['SERVER_SOFTWARE'], "Win")) {
       $headers   = "From: $yourEmail\r\n";
     } else {
       $headers   = "From: $yourWebsite <$yourEmail>\r\n"; 
     }
     $headers  .= "Reply-To: {$_POST['email']}\r\n";
-
     if (mail($yourEmail,$subject,$message,$headers)) {
       if (!empty($thanksPage)) {
         header("Location: $thanksPage");
@@ -122,11 +108,8 @@ function get_data($var) {
     echo htmlspecialchars($_POST[$var]);
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -154,7 +137,6 @@ function get_data($var) {
     gtag('config', 'UA-121626220-1');
   </script>
 </head>
-
 <body data-spy="scroll" data-target="#first" data-offset="115">
   <div id="whatsapp" class="whatsapp">
     <a target="_blank" href="https://api.whatsapp.com/send?phone=5492616852036&text=Hola!%20Me%20gustaría%20recibir%20más%20información%20sobre%20el%20curso%20de%20Programación">
@@ -191,7 +173,7 @@ function get_data($var) {
               </a>
             </span>
           </div>
-          <a target="_blank" data-toggle="modal" data-target="#formcontactomodal" data-backdrop="static" data-keyboard="false" class="btn btn-primary btn-egg contraste d-none d-md-block "><strong>INSCRIBITE AHORA</strong></a>
+          <a target="_blank" data-toggle="modal" data-target="#formcontactomodal" data-backdrop="static" data-keyboard="false" class="btn btn-primary btn-egg contraste d-none d-md-block "><strong>¡INSCRIBITE GRATIS!</strong></a>
           </a>
         </div>
       </div>
@@ -206,9 +188,8 @@ function get_data($var) {
             <h1>Sé un experto en desarrollo Web Full Stack</h1>
             <p class="my-4 lead">Aprendé a crear aplicaciones. Diseño front-end y arquitectura back-end. Programación orientada a objetos. Java.
               MySQL. HTML + CSS. Javascript.</p>
-            <a href="download/Egg_Programa_Programacion_2018.pdf" target="_blank" class="btn btn-primary btn-egg btn-lg dark mr-lg-4 mb-3 my-md-3"
-              style="width: 250px">Programa Completo</a>
-            <a href="#" class="btn btn-primary btn-egg btn-lg dark" data-toggle="modal" data-target="#formcontactomodal" style="width: 250px">Inscribite Ahora</a>
+            <a data-toggle="modal" data-target="#mailchimpmodal" class="btn btn-primary btn-egg btn-lg dark mr-lg-4 mb-3 my-md-3 b-big pt-3 txtbco" style="width: 250px; color: white">Programa<br>Completo</a>
+            <a href="#" class="btn btn-primary btn-egg btn-lg dark b-big pt-3" data-toggle="modal" data-target="#formcontactomodal" style="width: 250px">Inscribite<br>Gratis</a>
           </div>
         </div>
       </div>
@@ -281,9 +262,7 @@ function get_data($var) {
         </div>
       </div>
     </section>
-
     <!-- <section id="profesores" class="padding-section limit-panel"> -->
-
     <section id="programa" class="padding-section">
       <div class="container pb-5">
         <div class="row pb-5">
@@ -519,15 +498,13 @@ function get_data($var) {
         </div>
       </div>
     </section>
-
     <!-- <section id="edudelfuturo" class="limit-panel"></section> -->
-
     <section id="cuposlimitados" class="limit-panel">
       <div class="container py-5">
         <div class="row py-5">
           <div class="col-12 col-md-8 offset-md-2 text-center py-5">
             <h1 class="txtylow mb-4">¡Cupos limitados!</h1>
-            <a a target="_blank" data-toggle="modal" data-target="#formcontactomodal" data-backdrop="static" data-keyboard="false" class="btn btn-primary btn-egg btn-lg" style="color:#333; font-weight: 700; ">INSCRIBITE AHORA</a>
+            <a a target="_blank" data-toggle="modal" data-target="#formcontactomodal" data-backdrop="static" data-keyboard="false" class="btn btn-primary btn-egg btn-lg" style="color:#333; font-weight: 700; ">¡INSCRIBITE GRATIS!</a>
           </div>
         </div>
       </div>
@@ -543,30 +520,24 @@ function get_data($var) {
         <div class="row">
           <div class="col-12 col-lg-10 offset-lg-1">
             <div class="row align-items-start justify-content-around text-center">
-
               <div class="col-12 col-md-4 col-lg my-3 my-lg-0">
                 <img src="images/step1.svg" width="86" alt="Paso 1" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p class='mt-2'>¡Recordá que los cupos son limitados!</p>">
                 <h2 class="mt-4">Completá tus datos</h2>
                 <div class="d-block  d-sm-none d-md-none">¡Recordá que los cupos son limitados!</div>
               </div>
-
               <div class="col-1 d-none d-lg-block" style="height: 5px; background: #ffc500; margin-top:40px"></div>
-
               <div class="col-12 col-md-4 col-lg my-3 my-lg-0">
                 <img src="images/step2.svg" width="86" alt="Paso 2" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p class='mt-2'>Una vez inscripto, asistí a un encuentro con uno de tus directores para planificar tus objetivos y metas de forma personalizada.</p>">
                 <h2 class="mt-4">Planificá tus objetivos</h2>
                 <div class="d-block  d-sm-none d-md-none">Una vez inscripto, asistí a un encuentro con uno de tus directores para planificar tus objetivos y metas
                   de forma personalizada.</div>
               </div>
-
               <div class="col-1 d-none d-lg-block" style="height: 5px; background: #ffc500; margin-top:40px"></div>
-
               <div class="col-12 col-md-4 col-lg my-3 my-lg-0">
                 <img src="images/step3.svg" width="86" alt="Paso 3" data-toggle="tooltip" data-placement="bottom" data-html="true" title="<p class='mt-2'>¡Aprendé creando!</p>">
                 <h2 class="mt-4">Comenzá</h2>
                 <div class="d-block  d-sm-none d-md-none">¡Aprendé creando!</div>
               </div>
-
             </div>
           </div>
         </div>
@@ -636,68 +607,76 @@ function get_data($var) {
               </div>
             </div>
             <div class="py-5 text-center" style="background: #3e4646; border-radius:0 0 15px 15px">
-              <h4 class="txtylow">¡
-                <strong>25% de descuento</strong> en un solo pago!</h4>
+              <h4 class="txtylow"><strong>Inscribite Gratis</strong> <br> ¡<strong>25% de descuento</strong> en un solo pago!</h4>
               <span class="txtbco">Aceptamos todas las tarjetas de débito, crédito y efectivo</span>
             </div>
           </div>
         </div>
       </div>
     </section>
-
     <!-- <section id="faq" class="padding-section"></section> -->
-
     <section class="mb-5">
       <div class="col-12 col-md-8 offset-md-2 text-center pt-5">
         <h1>Nuestras Alianzas</h1>
         <br>
       </div>
-
       <div class="container" class="mb-5">
-
         <div class="row text-center">
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/embarca.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/logos/embarca.jpg" alt="Embarca">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/mdz.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/logos/mdz.jpg" alt="MDZ">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/olegario.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/logos/olegario.jpg" alt="Campues Olegario">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/agilmentor.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/logos/agilmentor.jpg" alt="AgilMentor">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/tienda_naranja.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/logos/tienda_naranja.jpg" alt="Tienda Naranja">
           </div>
-          <div class="col-6 col-md p-4 d-block d-md-none">
-            <img class="img-fluid" src="images/logos/mydesign.jpg" alt="Logo MyDesign">
-          </div>
+          <!-- <div class="col-6 col-md p-4 d-block d-md-none">
+            <img class="img-fluid" src="images/logos/mydesign.jpg" alt="My Design">
+          </div> -->
         </div>
-
         <div class="row text-center mt-lg-5">
           <div class="col-6 col-md p-4 d-none d-md-block">
-            <img class="img-fluid" src="images/logos/mydesign.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/logos/mydesign.jpg" alt="My Design">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/la_proa.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/logos/la_proa.jpg" alt="La Proa">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/polenta.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/logos/polenta.jpg" alt="Polenta">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/dictioz.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/logos/dictioz.jpg" alt="Dictioz">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/los_andes.jpg" alt="Logo MyDesign">
+            <img class="img-fluid" src="images/logos/los_andes.jpg" alt="Los Andes">
           </div>
         </div>
-
+        <div class="row text-center mt-lg-5">
+          <div class="col-6 col-md p-4 d-none d-md-block">
+            <img class="img-fluid" src="images/logos/aconcagua_sf.png" alt="Aconcagua SF">
+          </div>
+          <div class="col-6 col-md p-4">
+            <img class="img-fluid" src="images/white.jpg" alt="">
+          </div>
+          <div class="col-6 col-md p-4">
+            <img class="img-fluid" src="images/white.jpg" alt="">
+          </div>
+          <div class="col-6 col-md p-4">
+            <img class="img-fluid" src="images/white.jpg" alt="">
+          </div>
+          <div class="col-6 col-md p-4">
+            <img class="img-fluid" src="images/white.jpg" alt="">
+          </div>
+        </div>
       </div>
-
     </section>
-
     <section id="social" class="limit-panel">
       <div class="container py-5">
         <div class="row py-5">
@@ -712,7 +691,6 @@ function get_data($var) {
         </div>
       </div>
     </section>
-
   </main>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -844,9 +822,6 @@ if ($result != NULL) {
     </div>
   </div>
 </div>
-
-
-
+  <?php include 'modal-mailchimp.php' ?>
 </body>
-
 </html>

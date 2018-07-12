@@ -1,53 +1,46 @@
 <?php
 // OPTIONS - PLEASE CONFIGURE THESE BEFORE USE!
 
-$yourEmail = "hola@eggtech.com.ar"; // the email address you wish to receive these mails through
-$yourWebsite = "EGG TECH"; // the name of your website
-$thanksPage = ''; // URL to 'thanks for sending mail' page; leave empty to keep message on the same page 
-$maxPoints = 4; // max points a person can hit before it refuses to submit - recommend 4
-$requiredFields = "name,email,comments"; // names of the fields you'd like to be required as a minimum, separate each field with a comma
-
-
+$yourEmail = "hola@eggtech.com.ar";
+// the email address you wish to receive these mails through
+$yourWebsite = "EGG TECH";
+// the name of your website
+$thanksPage = '';
+// URL to 'thanks for sending mail' page - leave empty to keep message on the same page 
+$maxPoints = 4;
+// max points a person can hit before it refuses to submit - recommend 4
+$requiredFields = "name,email,comments";
+// names of the fields you'd like to be required as a minimum, separate each field with a comma
 // DO NOT EDIT BELOW HERE
 $error_msg = array();
 $result = null;
-
 $requiredFields = explode(",", $requiredFields);
-
 function clean($data) {
   $data = trim(stripslashes(strip_tags($data)));
   return $data;
 }
 function isBot() {
   $bots = array("Indy", "Blaiz", "Java", "libwww-perl", "Python", "OutfoxBot", "User-Agent", "PycURL", "AlphaServer", "T8Abot", "Syntryx", "WinHttp", "WebBandit", "nicebot", "Teoma", "alexa", "froogle", "inktomi", "looksmart", "URL_Spider_SQL", "Firefly", "NationalDirectory", "Ask Jeeves", "TECNOSEEK", "InfoSeek", "WebFindBot", "girafabot", "crawler", "www.galaxy.com", "Googlebot", "Scooter", "Slurp", "appie", "FAST", "WebBug", "Spade", "ZyBorg", "rabaz");
-
   foreach ($bots as $bot)
     if (stripos($_SERVER['HTTP_USER_AGENT'], $bot) !== false)
       return true;
-
   if (empty($_SERVER['HTTP_USER_AGENT']) || $_SERVER['HTTP_USER_AGENT'] == " ")
     return true;
-  
   return false;
 }
-
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   if (isBot() !== false)
     $error_msg[] = "No bots please! UA reported as: ".$_SERVER['HTTP_USER_AGENT'];
-    
   // lets check a few things - not enough to trigger an error on their own, but worth assigning a spam score.. 
   // score quickly adds up therefore allowing genuine users with 'accidental' score through but cutting out real spam :)
   $points = (int)0;
-  
   $badwords = array("adult", "beastial", "bestial", "blowjob", "clit", "cum", "cunilingus", "cunillingus", "cunnilingus", "cunt", "ejaculate", "fag", "felatio", "fellatio", "fuck", "fuk", "fuks", "gangbang", "gangbanged", "gangbangs", "hotsex", "hardcode", "jism", "jiz", "orgasim", "orgasims", "orgasm", "orgasms", "phonesex", "phuk", "phuq", "pussies", "pussy", "spunk", "xxx", "viagra", "phentermine", "tramadol", "adipex", "advai", "alprazolam", "ambien", "ambian", "amoxicillin", "antivert", "blackjack", "backgammon", "texas", "holdem", "poker", "carisoprodol", "ciara", "ciprofloxacin", "debt", "dating", "porn", "link=", "voyeur", "content-type", "bcc:", "cc:", "document.cookie", "onclick", "onload", "javascript");
-
   foreach ($badwords as $word)
     if (
       strpos(strtolower($_POST['comments']), $word) !== false || 
       strpos(strtolower($_POST['name']), $word) !== false
     )
       $points += 2;
-  
   if (strpos($_POST['comments'], "http://") !== false || strpos($_POST['comments'], "www.") !== false)
     $points += 2;
   if (isset($_POST['nojs']))
@@ -61,24 +54,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   if (preg_match("/[bcdfghjklmnpqrstvwxyz]{7,}/i", $_POST['comments']))
     $points += 1;
   // end score assignments
-
   foreach($requiredFields as $field) {
     trim($_POST[$field]);
-    
     if (!isset($_POST[$field]) || empty($_POST[$field]) && array_pop($error_msg) != "Please fill in all the required fields and submit again.\r\n")
       $error_msg[] = "Please fill in all the required fields and submit again.";
   }
-
   if (!empty($_POST['name']) && !preg_match("/^[a-zA-Z-'\s]*$/", stripslashes($_POST['name'])))
     $error_msg[] = "The name field must not contain special characters.\r\n";
   if (!empty($_POST['email']) && !preg_match('/^([a-z0-9])(([-a-z0-9._])*([a-z0-9]))*\@([a-z0-9])(([a-z0-9-])*([a-z0-9]))+' . '(\.([a-z0-9])([-a-z0-9_-])?([a-z0-9])+)+$/i', strtolower($_POST['email'])))
     $error_msg[] = "That is not a valid e-mail address.\r\n";
   if (!empty($_POST['url']) && !preg_match('/^(http|https):\/\/(([A-Z0-9][A-Z0-9_-]*)(\.[A-Z0-9][A-Z0-9_-]*)+)(:(\d+))?\/?/i', $_POST['url']))
     $error_msg[] = "Invalid website url.\r\n";
-  
   if ($error_msg == NULL && $points <= $maxPoints) {
     $subject = "Automatic Form Email";
-    
     $message = "You received this e-mail message through your website: \n\n";
     foreach ($_POST as $key => $val) {
       if (is_array($val)) {
@@ -93,14 +81,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $message .= 'IP: '.$_SERVER['REMOTE_ADDR']."\r\n";
     $message .= 'Browser: '.$_SERVER['HTTP_USER_AGENT']."\r\n";
     $message .= 'Points: '.$points;
-
     if (strstr($_SERVER['SERVER_SOFTWARE'], "Win")) {
       $headers   = "From: $yourEmail\r\n";
     } else {
       $headers   = "From: $yourWebsite <$yourEmail>\r\n"; 
     }
     $headers  .= "Reply-To: {$_POST['email']}\r\n";
-
     if (mail($yourEmail,$subject,$message,$headers)) {
       if (!empty($thanksPage)) {
         header("Location: $thanksPage");
@@ -122,10 +108,8 @@ function get_data($var) {
     echo htmlspecialchars($_POST[$var]);
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -153,7 +137,6 @@ function get_data($var) {
     gtag('config', 'UA-121626220-1');
   </script> 
 </head>
-
 <body data-spy="scroll" data-target="#first" data-offset="115">
   <div id="whatsapp" class="whatsapp">
     <a target="_blank" href="https://api.whatsapp.com/send?phone=5492616852036&text=Hola!%20Me%20gustaría%20recibir%20más%20información">
@@ -162,7 +145,6 @@ function get_data($var) {
   </div>
   <header>
     <nav class="fixed-top" data-toggle="affix" role="navigation">
-
       <div id="first" class="navbar navbar-dark bg-dark navbar-expand-md d-none d-sm-none d-md-block">
         <div class="nav navbar-nav collapse navbar-collapse justify-content-center" id="mainNav">
           <a class="nav-item nav-link active" href="index.php">Inicio</a>
@@ -178,7 +160,6 @@ function get_data($var) {
           </a>
         </div>
       </div>
-
       <div id="second" class="navbar navbar-light bg-light navbar-expand-sm">
         <div class="container">
           <a class="navbar-brand mx-auto mx-md-0" href="#">
@@ -194,24 +175,21 @@ function get_data($var) {
           <!-- <a target="_blank" href="https://m.me/344275365916631" class="btn btn-primary btn-egg contraste d-none d-md-block "><strong>¡INSCRIBITE AHORA!</strong></a> -->
         </div>
       </div>
-
     </nav>
   </header>
   <main>
     <section id="hero" autoplay preload="auto" class="h-100 pb-5 pb-md-0" data-vide-bg="video/ocean" class="videvg" data-vide-options="resizing: true, bgColor: black, muted: true, autoplay: true, position: 0% 0%">
       <div class="container h-100">
         <div class="row h-100 align-items-center">
-          <div class="col-12 col-md-8 offset-md-2 align-self-center text-center">
+          <div class="col-10 offset-1 col-md-8 offset-md-2 align-self-center text-center">
             <h1>¡Aprendé Marketing Digital y Programación de la mano de los mejores!</h1>
             <p class="my-4 lead"></p>
-            <a href="marketing.php" class="btn btn-primary btn-egg btn-lg dark mr-md-4 mb-3 mb-md-0" style="width: 250px">Marketing Digital</a>
-            <a href="programacion.php" class="btn btn-primary btn-egg btn-lg dark" style="width: 250px">Programación</a>
+            <a href="marketing.php" class="btn btn-primary btn-egg btn-lg dark mr-lg-4 mb-3 my-md-3 b-big pt-3 txtbco" style="width: 250px; color: white">Marketing Digital<br>algo</a>
+            <a href="programacion.php" class="btn btn-primary btn-egg btn-lg dark mr-lg-4 mb-3 my-md-3 b-big pt-3 txtbco" style="width: 250px; color: white">Programación<br>algo</a>
           </div>
         </div>
       </div>
     </section>
-
-
     <section id="edudelfuturo" class="limit-panel">
       <div class="container py-5">
         <div class="row pt-5">
@@ -239,7 +217,6 @@ function get_data($var) {
                 cada rincón. Trabajarás junto a profesionales del sector
                 <strong>compartiendo con tus profesores</strong> fuera del horario de clase.
                 <a target="_blank" href="http://www.campusolegario.org/campus/" class="txtylow"><strong>¡Conocelo!</strong></a></p>
-                
             </div>
           </div>
         </div>
@@ -271,7 +248,6 @@ function get_data($var) {
         </div>
       </div>
     </section>
-
     <section id="faq" class="padding-section">
       <div class="container pb-5">
         <div class="row pb-5">
@@ -394,16 +370,12 @@ function get_data($var) {
         </div>
       </div>
     </section>
-
     <section id="alianzas" class="mb-5">
-    
-      <div class="col-12 col-md-8 offset-md-2 text-center pt-5">
+    <div class="col-12 col-md-8 offset-md-2 text-center pt-5">
         <h1>Nuestras Alianzas</h1>
         <br>
       </div>
-
       <div class="container" class="mb-5">
-
         <div class="row text-center">
           <div class="col-6 col-md p-4">
             <img class="img-fluid" src="images/logos/embarca.jpg" alt="Embarca">
@@ -424,7 +396,6 @@ function get_data($var) {
             <img class="img-fluid" src="images/logos/mydesign.jpg" alt="My Design">
           </div> -->
         </div>
-
         <div class="row text-center mt-lg-5">
           <div class="col-6 col-md p-4 d-none d-md-block">
             <img class="img-fluid" src="images/logos/mydesign.jpg" alt="My Design">
@@ -442,7 +413,6 @@ function get_data($var) {
             <img class="img-fluid" src="images/logos/los_andes.jpg" alt="Los Andes">
           </div>
         </div>
-
         <div class="row text-center mt-lg-5">
           <div class="col-6 col-md p-4 d-none d-md-block">
             <img class="img-fluid" src="images/logos/aconcagua_sf.png" alt="Aconcagua SF">
@@ -460,11 +430,8 @@ function get_data($var) {
             <img class="img-fluid" src="images/white.jpg" alt="">
           </div>
         </div>
-
       </div>
-
     </section>
-
     <section id="social" class="limit-panel">
       <div class="container py-4">
         <div class="row py-4">
@@ -486,8 +453,7 @@ function get_data($var) {
        height="450" width="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
       </div>
     </section>
-
-    <!-- <section id="f1" class="gris">
+    <section id="f1" class="gris">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 text-left hidden-xs hidden-sm">
@@ -495,8 +461,7 @@ function get_data($var) {
                 </div>
             </div>
         </div>
-    </section> -->
-
+    </section>
   </main>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -506,9 +471,7 @@ function get_data($var) {
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
     crossorigin="anonymous"></script>
-
   <script src="node_modules/Vide-0.5.1/dist/jquery.vide.min.js"></script>
-
   <script>
     $(document).ready(function () {
       //FORCE VIDEO PLAY - SAFARI 11 ISSUE
@@ -517,7 +480,6 @@ function get_data($var) {
       })
     });
   </script>
-
   <script>
     $(window).scroll(function () {
       if ($(document).scrollTop() > 50) {
@@ -533,7 +495,6 @@ function get_data($var) {
         $('#third').removeClass('shrink');
       }
     });
-
     $(window).scroll(function () {
       if ($(document).scrollTop() > 100) {
         $('#whatsapp').addClass('washrink');
@@ -547,7 +508,6 @@ function get_data($var) {
       $('[data-toggle="tooltip"]').tooltip()
     })
   </script>
-
   <script>
     window.addEventListener("hashchange", function () {
       window.scrollTo(window.scrollX, window.scrollY - 60);
@@ -632,7 +592,6 @@ if ($result != NULL) {
     </div>
   </div>
 </div>
-
+<?php include 'modal-mailchimp.php' ?>
 </body>
-
 </html>

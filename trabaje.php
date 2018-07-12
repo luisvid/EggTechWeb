@@ -60,21 +60,23 @@
   </header>
   <main>
 	<section id="hero">
-		<div class="jumbotron_contacto">
-			<div class="container scrollme">
-				<div class="row animateme" data-when="exit" data-from="0" data-to="1" data-translatey="100" data-easing="easeout" data-opacity="0">
-					<div class="col-xs-12">
-						<h1>¿Querés ser parte </br> de <strong> nuestro equipo?</strong></h1>
-						<p class="lead">Completá el siguiente formulario</p>
-					</div>
-				</div>
-			</div>
+		<div class="jumbotron_contacto" style="background-position:0% !important;">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-10 offset-1 col-md-8 offset-md-2 align-self-center text-center">
+            <h1 class="mb-5 txtylow">Formá parte de la primera escuela de Innovación Digital en Mendoza</h1>
+            <p class="mt-4 txtbco">Completá el formulario con tus datos.</p>
+            <p class="mt-4 txtbco">Evaluaremos tu CV y nos pondremos en contacto con vos.</p>
+           </div>
+        </div>
+      </div>
 		</div>
-	</section>
-	<section id="contacto">
+  </section>
+  
+ 	<section id="contacto">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-8 col-sm-offset-2">
+				<div class="col-sm-8 offset-2">
 					<script type="text/javascript">document.write(unescape("%3Ciframe id=\"fb_iframe\" src=\"trabajeform.php" + window.location.search + "\" width=\"100%\" height=\"1250\"allowtransparency=\"true\" scrolling=\"no\" frameborder=\"0\"%3E&lt;a href=\"trabajeform.php\" title=\"trabajeform\"&gt;Check out my CoffeeCup Form&lt;/a&gt;%3C/iframe%3E"));</script>
 					<noscript>
 					  <iframe width="100%" height="1250" style="border:none; background:transparent; overflow:hidden;"

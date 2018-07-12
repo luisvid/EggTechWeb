@@ -99,6 +99,12 @@ p{
 	border-color: #ffca00; 
 }
 
+.b-big{
+	height: 100px;
+	line-height: 32px;
+	font-size: 1.5rem;
+}
+
 .accordion{
 	overflow: hidden;
 }
@@ -126,8 +132,6 @@ p{
 .btn-egg.contraste{
 	color: #333;
 }
-
-
 
 .tooltip p{
 	font-size: 1rem !important;
@@ -393,7 +397,7 @@ margin:0;
 		position: relative;
 		top:-140px;
 		background: url('../images/img_top2.jpg') no-repeat;
-		background-position: 77% 0;
+		/*background-position: 77% 0;*/
 		min-height: 524px;
 		z-index: 1;
 		padding: 220px 0 0 0;
@@ -434,7 +438,7 @@ margin:0;
 		position: relative;
 		top:-140px;
 		background: url('../images/img_top2.jpg') no-repeat;
-		background-position: 90% 0;
+		/*background-position: 90% 0;*/
 		min-height: 524px;
 		z-index: 1;
 		padding: 220px 0 0 0;
@@ -467,7 +471,7 @@ margin:0;
 		position: relative;
 		top:-140px;
 		background: url('../images/img_top2.jpg') no-repeat;
-		background-position: 100% 0;
+		/*background-position: 100% 0;*/
 		min-height: 524px;
 		z-index: 1;
 		padding: 220px 0 0 0;
@@ -500,7 +504,7 @@ margin:0;
 		position: relative;
 		top:-140px;
 		background: url('../images/img_top2.jpg') no-repeat;
-		background-position: 110% 0;
+		/*background-position: 110% 0;*/
 		min-height: 524px;
 		z-index: 1;
 		padding: 220px 0 0 0;
@@ -533,7 +537,7 @@ margin:0;
 		position: relative;
 		top:-140px;
 		background: url('../images/img_top2.jpg') no-repeat;
-		background-position: 120% 0;
+		/*background-position: 120% 0;*/
 		min-height: 524px;
 		z-index: 1;
 		padding: 220px 0 0 0;
@@ -565,7 +569,7 @@ margin:0;
 		position: relative;
 		top:-140px;
 		background: url('../images/img_top2.jpg') no-repeat;
-		background-position: 200% 0;
+		/*background-position: 200% 0;*/
 		min-height: 524px;
 		z-index: 1;
 		padding: 220px 0 0 0;
@@ -598,7 +602,7 @@ margin:0;
 		position: relative;
 		top:-140px;
 		background: url('../images/img_top2.jpg') no-repeat;
-		background-position: 280% 0;
+		/*background-position: 280% 0;*/
 		min-height: 524px;
 		z-index: 1;
 		padding: 220px 0 0 0;
