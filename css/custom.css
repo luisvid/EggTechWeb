@@ -124,6 +124,11 @@ p{
 	border-color: #333;
 }
 
+.btn-egg.yellow{
+	background-color:#ffca00;
+	border-color:#ffca00;
+}
+
 .btn-egg.dark:hover{
 	background-color: #666 !important;
 	border-color: #333;
@@ -207,6 +212,26 @@ nav #second{
 	padding-top:115px;
 }
 
+#herotbj{
+	background: url('../images/img_top2.jpg');
+	background-size: cover;
+	height: 550px !important;
+	padding-top:115px;
+}
+
+#heromkt{
+	background: url('../images/img_mkt.jpg');
+	background-size: cover;
+	height: 750px !important;
+	padding-top:115px;
+}
+
+#heroprg{
+	background: url('../images/img_programacion.jpg');
+	background-size: cover;
+	height: 750px !important;
+	padding-top:115px;
+}
 
 /* -------------- APRENDE CREANDO / A QUIEN VA DIRIGIDO -------------- #ffca00 */
 

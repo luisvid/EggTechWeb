@@ -180,7 +180,7 @@ function get_data($var) {
     </nav>
   </header>
   <main>
-    <section id="hero" autoplay preload="auto" class="h-100 pb-5 pb-md-0" data-vide-bg="video/ocean" class="videvg" data-vide-options="resizing: true, bgColor: black, muted: true, autoplay: true, position: 0% 0%">
+    <section id="heroprg" class="h-100 pb-5 pb-md-0">
       <div class="container h-100">
         <div class="row h-100 align-items-center">
           <div class="col-10 offset-1 col-md-8 offset-md-2 align-self-center text-center">
@@ -188,7 +188,7 @@ function get_data($var) {
             <h1>Sé un experto en desarrollo Web Full Stack</h1>
             <p class="my-4 lead">Aprendé a crear aplicaciones. Diseño front-end y arquitectura back-end. Programación orientada a objetos. Java.
               MySQL. HTML + CSS. Javascript.</p>
-            <a data-toggle="modal" data-target="#mailchimpmodal" class="btn btn-primary btn-egg btn-lg dark mr-lg-4 mb-3 my-md-3 b-big pt-3 txtbco" style="width: 250px; color: white">Programa<br>Completo</a>
+            <a data-toggle="modal" data-target="#mailchimpmodalprg" class="btn btn-primary btn-egg btn-lg dark mr-lg-4 mb-3 my-md-3 b-big pt-3 txtbco" style="width: 250px; color: white">Programa<br>Completo</a>
             <a href="#" class="btn btn-primary btn-egg btn-lg dark b-big pt-3" data-toggle="modal" data-target="#formcontactomodal" style="width: 250px">Inscribite<br>Gratis</a>
           </div>
         </div>
@@ -822,6 +822,6 @@ if ($result != NULL) {
     </div>
   </div>
 </div>
-  <?php include 'modal-mailchimp.php' ?>
+  <?php include 'modal-mailchimp-prg.php' ?>
 </body>
 </html>

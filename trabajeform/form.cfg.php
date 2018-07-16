@@ -52,7 +52,7 @@
 			"from" : "",
 			"is_present" : true,
 			"replyto" : "",
-			"to" : "luisvid@gmail.com"
+			"to" : "hola@eggtech.com.ar"
 		}
 	},
 	"general_settings" : 

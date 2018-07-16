@@ -184,8 +184,8 @@ function get_data($var) {
           <div class="col-10 offset-1 col-md-8 offset-md-2 align-self-center text-center">
             <h1>¡Aprendé Marketing Digital y Programación de la mano de los mejores!</h1>
             <p class="my-4 lead"></p>
-            <a href="marketing.php" class="btn btn-primary btn-egg btn-lg dark mr-lg-4 mb-3 my-md-3 b-big pt-3 txtbco" style="width: 250px; color: white">Marketing Digital<br>algo</a>
-            <a href="programacion.php" class="btn btn-primary btn-egg btn-lg dark mr-lg-4 mb-3 my-md-3 b-big pt-3 txtbco" style="width: 250px; color: white">Programación<br>algo</a>
+            <a href="marketing.php" class="btn btn-primary btn-egg btn-lg dark mr-lg-4 mb-3 my-md-3 b-big pt-3 txtbco" style="width: 250px; color: white">Curso de<br>Marketing Digital</a>
+            <a href="programacion.php" class="btn btn-primary btn-egg btn-lg dark mr-lg-4 mb-3 my-md-3 b-big pt-3 txtbco" style="width: 250px; color: white">Curso de<br>Programación</a>
           </div>
         </div>
       </div>

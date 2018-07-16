@@ -173,20 +173,28 @@ function get_data($var) {
               </a>
             </span>
           </div>
-            <a target="_blank" data-toggle="modal" data-target="#formcontactomodal" data-backdrop="static" data-keyboard="false" class="btn btn-primary btn-egg contraste d-none d-md-block "><strong>¡INSCRIBITE GRATIS!</strong></a>
+            <a target="_blank" data-toggle="modal" data-target="#formcontactomodal" data-backdrop="static" data-keyboard="false" 
+            class="btn btn-primary btn-egg contraste d-none d-md-block"><strong>¡INSCRIBITE GRATIS!</strong></a>
           </a>
         </div>
       </div>
     </nav>
   </header>
   <main>
-    <section id="hero" autoplay preload="auto" class="h-100 pb-5 pb-md-0" data-vide-bg="video/ocean" class="videvg" data-vide-options="resizing: true, bgColor: black, muted: true, autoplay: true, position: 0% 0%">
+    <section id="heromkt" class="h-100 pb-5 pb-md-0">
       <div class="container h-100">
         <div class="row h-100 align-items-center">
           <div class="col-10 offset-1 col-md-8 offset-md-2 align-self-center text-center">
-            <h1 class="mb-5">Convertite en un experto del Marketing Digital de la mano de los mejores</h1>
-            <a data-toggle="modal" data-target="#mailchimpmodal" class="btn btn-primary btn-egg btn-lg dark mr-lg-4 mb-3 my-md-3 b-big pt-3 txtbco" style="width: 250px; color: white">Programa<br>Completo</a>
-            <a href="#" class="btn btn-primary btn-egg btn-lg dark b-big pt-3" data-toggle="modal" data-target="#formcontactomodal" style="width: 250px">Inscribite<br>Gratis</a>
+            <h1 class="mb-5 txtbco">Convertite en un experto del Marketing Digital de la mano de los mejores</h1>
+            
+            <a data-toggle="modal" data-target="#mailchimpmodal" 
+              class="btn btn-primary btn-egg btn-lg yellow  mr-lg-4 mb-3 my-md-3 b-big pt-3" 
+              style="width: 250px; font-weight: bold">Programa<br>Completo</a>
+              
+            <a data-toggle="modal" data-target="#formcontactomodal"
+              class="btn btn-primary btn-egg btn-lg yellow  mr-lg-4 mb-3 my-md-3 b-big pt-3" 
+              style="width: 250px; font-weight: bold"  >Inscribite<br>Gratis</a>
+              
           </div>
         </div>
       </div>
@@ -581,7 +589,8 @@ function get_data($var) {
         <div class="row py-5">
           <div class="col-12 col-md-8 offset-md-2 text-center py-5">
             <h1 class="txtylow mb-4">¡Cupos limitados!</h1>
-            <a a target="_blank" data-toggle="modal" data-target="#formcontactomodal" data-backdrop="static" data-keyboard="false" class="btn btn-primary btn-egg btn-lg" style="color:#333; font-weight: 700; ">¡INSCRIBITE GRATIS!</a>
+            <a a target="_blank" data-toggle="modal" data-target="#formcontactomodal" data-backdrop="static" data-keyboard="false" 
+              class="btn btn-primary btn-egg btn-lg" style="color:#333; font-weight: 700; ">¡INSCRIBITE GRATIS!</a>
           </div>
         </div>
       </div>
