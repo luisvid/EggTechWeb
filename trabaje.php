@@ -60,25 +60,25 @@
   </header>
   <main>
 	<section id="herotbj">
-		<div class="jumbotron_contacto" style="background-position:0% !important;">
-    <div class="container h-100">
+		  <div class="container h-100">
         <div class="row h-100 align-items-center">
-          <div class="col-10 offset-1 col-md-8 offset-md-2 align-self-center text-center">
-            <h1 class="mb-5 txtylow">Formá parte de la primera escuela de Innovación Digital en Mendoza</h1>
-            <p class="mt-4 txtbco">Completá el formulario con tus datos.</p>
-            <p class="mt-4 txtbco">Evaluaremos tu CV y nos pondremos en contacto con vos.</p>
-           </div>
+          <div class="col-10 offset-1 col-md-8 offset-md-2 align-self-center text-center txtylow">
+              <h1>Formá parte de la primera escuela de </h1>
+              <h1>Innovación Digital en Mendoza</h1>
+              <p class="my-4 lead txtbco" style="margin-bottom: 0rem!important;">Completá el formulario con tus datos.</p>                              
+              <p class="my-4 lead txtbco" style="margin-bottom: 0rem!important; margin-top: 0rem!important">Evaluaremos tu CV y nos pondremos en contacto con vos.</p>
+          </div>
         </div>
       </div>
-		</div>
-  </section>
- 	<section id="contacto">
+	</section>
+ 	<section id="contacto" style="margin-top:40px !important;">
 		<div class="container">
 			<!-- <div class="row"> -->
-				<div class="col-sm-8 offset-2">
-					<script type="text/javascript">document.write(unescape("%3Ciframe id=\"fb_iframe\" src=\"trabajeform.php" + window.location.search + "\" width=\"100%\" height=\"1250\"allowtransparency=\"true\" scrolling=\"no\" frameborder=\"0\"%3E&lt;a href=\"trabajeform.php\" title=\"trabajeform\"&gt;Check out my CoffeeCup Form&lt;/a&gt;%3C/iframe%3E"));</script>
+      	<div class="col-sm-8 offset-2">
+        <h1 class="mb-4">Ingresá tus datos</h1>
+          <script type="text/javascript">document.write(unescape("%3Ciframe id=\"fb_iframe\" src=\"trabajeform.php" + window.location.search + "\" width=\"100%\" height=\"1250\"allowtransparency=\"true\" scrolling=\"no\" frameborder=\"0\"%3E&lt;a href=\"trabajeform.php\" title=\"trabajeform\"&gt;Check out my CoffeeCup Form&lt;/a&gt;%3C/iframe%3E"));</script>
 					<noscript>
-					  <iframe width="100%" height="700" style="border:none; background:transparent; overflow:hidden;"
+            <iframe width="100%" height="700" style="border:none; background:transparent; overflow:hidden;"
 					  id="fb_iframe" src="trabajeform/trabajeform.html">
 					    &lt;a href="trabajeform.php" title="trabajeform"&gt;Check out my CoffeeCup
 					    Form&lt;/a&gt;

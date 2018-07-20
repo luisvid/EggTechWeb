@@ -193,7 +193,7 @@ function get_data($var) {
               
             <a data-toggle="modal" data-target="#formcontactomodal"
               class="btn btn-primary btn-egg btn-lg yellow  mr-lg-4 mb-3 my-md-3 b-big pt-3" 
-              style="width: 250px; font-weight: bold"  >Inscribite<br>Gratis</a>
+              style="width: 250px; font-weight: bold; margin-right:0px !important;"  >Inscribite<br>Gratis</a>
               
           </div>
         </div>

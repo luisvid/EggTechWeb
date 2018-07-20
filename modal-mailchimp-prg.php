@@ -17,6 +17,8 @@
               <p class="mb-4">Completá el formulario y recibí el detalle del programa de estudios.</p>
             </div>
           </div>
+
+          
           <!-- Begin MailChimp Signup Form -->
           <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
           <style type="text/css">
@@ -25,7 +27,8 @@
           We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
           </style>
           <div id="mc_embed_signup">
-            <form action="https://eggtech.us18.list-manage.com/subscribe/post?u=5c53863e228fb0396adbc4013&amp;id=de242ee295" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <form action="https://eggtech.us18.list-manage.com/subscribe/post?u=0f9d9776261157d2b356dee5f&amp;id=11731c233c" 
+              method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
               <div id="mc_embed_signup_scroll">
                 <div class="form-group">
                 <input placeholder="Email" type="email" value="" name="EMAIL" class="required form-control email" id="mce-EMAIL">
@@ -36,9 +39,14 @@
             <div class="form-group">
             <input placeholder="Teléfono" type="text" name="PHONE" class="required form-control" value="" id="mce-PHONE">
           </div>
+
           <div id="mce-responses" class="clearfix" style="width: 100% !important; margin:0 !important; padding:0 !important">
-            <div class="response bg-danger" id="mce-error-response" style="display:none; border-radius: 10px; padding:15px; width:100%; color:white; text-align:center;"></div>
-            <div class="response bg-success" id="mce-success-response" style="display:none; border-radius: 10px; padding:15px; width:100%; color:white; text-align:center;"></div>
+            <div class="response bg-danger" id="mce-error-response" style="display:none; border-radius: 10px; padding:15px; width:100%; color:white; text-align:center;">
+            </div>
+            <div class="response bg-success" id="mce-success-response" style="display:none; border-radius: 10px; padding:15px; width:100%; color:white; text-align:center;">
+              <a href="path_to_file" download="/download/Egg_Programa_Programacion_2018.pdf">Download</a>
+            </div>
+
             </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
             <div class="col-md-12 text-center">
               <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_5c53863e228fb0396adbc4013_c92425de37" tabindex="-1" value=""></div>
@@ -47,7 +55,11 @@
           </div>
         </form>
       </div>
-      <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday'; /*
+
+      <!-- <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script> -->
+      <script type='text/javascript'>
+      (function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';
+      fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday'; /*
       * Translated default messages for the $ validation plugin.
       * Locale: ES
       */
@@ -71,7 +83,6 @@
       min: $.validator.format("Por favor, escribe un valor mayor o igual a {0}.")
       });}(jQuery));var $mcj = jQuery.noConflict(true);</script>
       <!--End mc_embed_signup-->
-      
     </div>
   </div>
 </div>

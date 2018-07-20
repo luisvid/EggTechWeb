@@ -184,7 +184,7 @@ function get_data($var) {
       <div class="container h-100">
         <div class="row h-100 align-items-center">
           <div class="col-10 offset-1 col-md-8 offset-md-2 align-self-center text-center">
-            <h1>Convertite en Programador</h1>
+            <h1 style="margin-bottom: 0px !important;">Convertite en Programador</h1>
             <h1>Sé un experto en desarrollo Web Full Stack</h1>
             <p class="my-4 lead">Aprendé a crear aplicaciones. Diseño front-end y arquitectura back-end. Programación orientada a objetos. Java.
               MySQL. HTML + CSS. Javascript.</p>

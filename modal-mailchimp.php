@@ -25,7 +25,7 @@
           We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
           </style>
           <div id="mc_embed_signup">
-            <form action="https://eggtech.us18.list-manage.com/subscribe/post?u=5c53863e228fb0396adbc4013&amp;id=c92425de37" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <form action="https://eggtech.us18.list-manage.com/subscribe/post?u=0f9d9776261157d2b356dee5f&amp;id=297e2c3fe2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
               <div id="mc_embed_signup_scroll">
                 <div class="form-group">
                 <input placeholder="Email" type="email" value="" name="EMAIL" class="required form-control email" id="mce-EMAIL">
@@ -47,7 +47,8 @@
           </div>
         </form>
       </div>
-      <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday'; /*
+      <!-- <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script> -->
+      <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday'; /*
       * Translated default messages for the $ validation plugin.
       * Locale: ES
       */
