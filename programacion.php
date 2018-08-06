@@ -655,24 +655,7 @@ function get_data($var) {
             <img class="img-fluid" src="images/logos/dictioz.jpg" alt="Dictioz">
           </div>
           <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/logos/los_andes.jpg" alt="Los Andes">
-          </div>
-        </div>
-        <div class="row text-center mt-lg-5">
-          <div class="col-6 col-md p-4 d-none d-md-block">
             <img class="img-fluid" src="images/logos/aconcagua_sf.png" alt="Aconcagua SF">
-          </div>
-          <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/white.jpg" alt="">
-          </div>
-          <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/white.jpg" alt="">
-          </div>
-          <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/white.jpg" alt="">
-          </div>
-          <div class="col-6 col-md p-4">
-            <img class="img-fluid" src="images/white.jpg" alt="">
           </div>
         </div>
       </div>
